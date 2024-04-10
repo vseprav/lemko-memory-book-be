@@ -2,6 +2,7 @@ import os
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from dotenv import load_dotenv
 
 from app.routes import search_bp
@@ -13,13 +14,14 @@ def create_app(test_config=None):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
+    migrate = Migrate(app, db)
     with app.app_context():
-            from app import models  # Import models after db initialization
+        db.create_all()
 
     # Health check hello route
     @app.route('/hello')
     def hello():
-        return 'Hello, World!'
+        return 'Дай Боже добрыден, сьвітку!'
 
     # Register the blueprint
     app.register_blueprint(search_bp, url_prefix='/search')
