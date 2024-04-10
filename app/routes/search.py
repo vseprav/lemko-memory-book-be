@@ -1,4 +1,5 @@
-from flask import Blueprint, request
+from flask import Blueprint, Response, request
+import json
 from sqlalchemy import desc
 from app.models.evicted_person import EvictedPerson
 
@@ -15,6 +16,8 @@ def evicted_persons():
         .order_by(desc(EvictedPerson.family_uuid))
         .all()
     )
-    serialized_result = [person.to_dict() for person in result]
 
-    return serialized_result
+    data = [person.to_dict() for person in result]
+    response_body = json.dumps(data, ensure_ascii=False)
+
+    return Response(response_body, mimetype='application/json; charset=utf-8')
