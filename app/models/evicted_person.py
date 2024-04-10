@@ -23,8 +23,8 @@ class EvictedPerson(db.Model):
 
     def to_dict(self):
         return {
-            'id': self.id,
-            'family_uuid': self.family_uuid,
+            'id': str(self.id),
+            'family_uuid': str(self.family_uuid),
             'full_name': self.full_name,
             'family_role': self.family_role,
             'birth_year': self.birth_year,
