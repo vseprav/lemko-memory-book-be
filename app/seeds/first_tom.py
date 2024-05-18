@@ -3,17 +3,18 @@ import click
 from app.extensions import db
 from app.models.evicted_person import EvictedPerson
 import pandas as pd
+import uuid
 
 
 @click.command(name='seed_db')
 @with_appcontext
 def seed_evicted_persons():
     # Read the CSV file
-    df = pd.read_csv('./app/seeds/evicted_persons_tom1.csv')
+    df = pd.read_csv('./app/seeds/evicted_persons_all_toms.csv')
     # Iterate over DataFrame rows and save to database
     for index, row in df.iterrows():
         person = EvictedPerson(
-            id=row['id'],
+            id=uuid.uuid4(),
             family_uuid=row['family_uuid'],
             full_name=row['full_name'],
             family_role=row['family_role'],

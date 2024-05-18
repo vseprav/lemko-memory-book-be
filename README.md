@@ -4,3 +4,4 @@
 `pip install -r requirements.txt`
 `flask db init`
 `flask db migrate -m "Added evicted persons model"`
+`flask seed_db`
