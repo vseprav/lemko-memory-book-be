@@ -10,6 +10,9 @@ search_bp = Blueprint('search', __name__)
 def evicted_persons():
     search_query = request.args.get('query', '')
 
+    if not search_query or len(search_query) < 3:
+        return Response('[]', mimetype='application/json; charset=utf-8')
+
     like_pattern = f"%{search_query}%"
     result = (
         EvictedPerson.query
