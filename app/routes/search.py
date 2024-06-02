@@ -5,6 +5,7 @@ from app.models.evicted_person import EvictedPerson
 
 search_bp = Blueprint('search', __name__)
 
+
 @search_bp.route('/evicted_persons')
 def evicted_persons():
     search_query = request.args.get('query', '')

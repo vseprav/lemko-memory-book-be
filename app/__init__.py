@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from dotenv import load_dotenv
@@ -9,8 +10,10 @@ from app.routes import search_bp
 from app.extensions import db
 from app.seeds.first_tom import seed_evicted_persons
 
+
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
+    CORS(app)
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URI")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -31,5 +34,3 @@ def create_app(test_config=None):
     app.register_blueprint(search_bp, url_prefix='/search')
 
     return app
-
-
