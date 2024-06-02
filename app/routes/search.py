@@ -9,6 +9,7 @@ search_bp = Blueprint('search', __name__)
 @search_bp.route('/evicted_persons')
 def evicted_persons():
     search_query = request.args.get('query', '')
+    result_limit = request.args.get('limit', 100)
 
     if not search_query or len(search_query) < 3:
         return Response('[]', mimetype='application/json; charset=utf-8')
@@ -16,8 +17,9 @@ def evicted_persons():
     like_pattern = f"%{search_query}%"
     result = (
         EvictedPerson.query
-        .filter(EvictedPerson.full_name.like(like_pattern))
+        .filter(EvictedPerson.full_name.ilike(like_pattern))
         .order_by(desc(EvictedPerson.family_uuid))
+        .limit(result_limit)
         .all()
     )
 
