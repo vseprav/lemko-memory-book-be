@@ -18,7 +18,6 @@ def evicted_persons():
     result = (
         EvictedPerson.query
         .filter(EvictedPerson.full_name.ilike(like_pattern))
-        .order_by(desc(EvictedPerson.family_uuid))
         .limit(result_limit)
         .all()
     )
