@@ -6,4 +6,7 @@
 `flask db init`
 `flask db migrate -m "Added evicted persons model"`
 # BE dev url
-https://memorybookbe.azurewebsites.net/search/evicted_persons?query=Кухар
+## Search route
+`https://memorybookbe.azurewebsites.net/search/evicted_persons?query=Кухар`
+## Family route
+`https://memorybookbe.azurewebsites.net/family/c845a093-e33c-4da4-94f2-9d7924893718`
