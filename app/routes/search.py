@@ -9,7 +9,7 @@ search_bp = Blueprint('search', __name__)
 @search_bp.route('/evicted_persons')
 def evicted_persons():
     search_query = request.args.get('query', '')
-    result_limit = request.args.get('limit', 100)
+    result_limit = request.args.get('limit', 300)
 
     if not search_query or len(search_query) < 3:
         return Response('[]', mimetype='application/json; charset=utf-8')
