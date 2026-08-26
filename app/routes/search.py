@@ -1,18 +1,26 @@
+from functools import lru_cache
 from flask import Blueprint, Response, request
 import json
-from sqlalchemy import desc
+from sqlalchemy import desc, distinct, func
 from app.models.evicted_person import EvictedPerson
 
 search_bp = Blueprint('search', __name__)
 
-MAX_LIMIT = 300
+MAX_LIMIT = 50
+MAX_FACETS = 50
 
 # Names in the DB use both the typographic (’) and ASCII (') apostrophe
 APOSTROPHES = "'’ʼ‘`"
 
 
-def json_response(data):
-    return Response(json.dumps(data, ensure_ascii=False), mimetype='application/json; charset=utf-8')
+CACHE_MAX_AGE = 86400  # data is static; let browsers/CDN cache responses for a day
+
+
+def json_response(data, status=200):
+    resp = Response(json.dumps(data, ensure_ascii=False), status=status,
+                    mimetype='application/json; charset=utf-8')
+    resp.headers['Cache-Control'] = f'public, max-age={CACHE_MAX_AGE}'
+    return resp
 
 
 def escape_for_like(text):
@@ -27,34 +35,30 @@ def escape_for_like(text):
     return ''.join(chars)
 
 
-@search_bp.route('/evicted_persons')
-def evicted_persons():
-    search_query = request.args.get('query', '').strip()
-    limit = min(request.args.get('limit', 20, type=int), MAX_LIMIT)
-    offset = max(request.args.get('offset', 0, type=int), 0)
-
-    if not search_query or len(search_query) < 3:
-        return json_response({'total': 0, 'last_names': [], 'area_evictions': [], 'items': []})
-
+@lru_cache(maxsize=2048)
+def _search(search_query, limit, offset):
     # Every word must match somewhere in the name, in any order
     words = search_query.split()
     filters = [EvictedPerson.full_name.ilike(f"%{escape_for_like(word)}%") for word in words]
     base_query = EvictedPerson.query.filter(*filters)
 
-    total = base_query.count()
+    total = base_query.with_entities(func.count()).scalar()
 
-    last_names = []
-    area_evictions = []
-    seen_names = set()
-    seen_areas = set()
-    for full_name, area in base_query.with_entities(EvictedPerson.full_name, EvictedPerson.area_eviction):
-        last_name = full_name.split(' ')[0].strip()
-        if last_name not in seen_names:
-            seen_names.add(last_name)
-            last_names.append(last_name)
-        if area and area not in seen_areas:
-            seen_areas.add(area)
-            area_evictions.append(area)
+    # Facets computed in SQL instead of loading every matching row into Python
+    last_name_expr = func.split_part(EvictedPerson.full_name, ' ', 1)
+    last_names = [
+        row[0] for row in base_query
+        .with_entities(distinct(last_name_expr))
+        .order_by(last_name_expr)
+        .limit(MAX_FACETS)
+    ]
+    area_evictions = [
+        row[0] for row in base_query
+        .filter(EvictedPerson.area_eviction.isnot(None))
+        .with_entities(distinct(EvictedPerson.area_eviction))
+        .order_by(EvictedPerson.area_eviction)
+        .limit(MAX_FACETS)
+    ]
 
     # Names starting with the query rank first; then alphabetical.
     # Stable ordering is required for offset paging to return consistent pages.
@@ -71,9 +75,21 @@ def evicted_persons():
         .all()
     )
 
-    return json_response({
+    return {
         'total': total,
         'last_names': last_names,
         'area_evictions': area_evictions,
         'items': [person.to_dict() for person in items],
-    })
+    }
+
+
+@search_bp.route('/evicted_persons')
+def evicted_persons():
+    search_query = ' '.join(request.args.get('query', '').split())
+    limit = min(request.args.get('limit', 20, type=int), MAX_LIMIT)
+    offset = max(request.args.get('offset', 0, type=int), 0)
+
+    if not search_query or len(search_query) < 3:
+        return json_response({'total': 0, 'last_names': [], 'area_evictions': [], 'items': []})
+
+    return json_response(_search(search_query, limit, offset))

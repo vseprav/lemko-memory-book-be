@@ -16,11 +16,17 @@ def create_app(test_config=None):
     CORS(app)
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URI")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    # Keep a small warm pool: opening Postgres connections is CPU-expensive,
+    # and Azure drops idle connections, so recycle and ping before use.
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+        'pool_size': 5,
+        'max_overflow': 5,
+        'pool_pre_ping': True,
+        'pool_recycle': 1800,
+    }
 
     db.init_app(app)
     migrate = Migrate(app, db)
-    with app.app_context():
-        db.create_all()
 
     # Add the seed_db command to the app
     app.cli.add_command(seed_evicted_persons)

@@ -1,7 +1,9 @@
-from flask import Blueprint, Response, request
-import json
+import uuid
+from functools import lru_cache
+from flask import Blueprint, abort
 from sqlalchemy import desc
 from app.models.evicted_person import EvictedPerson
+from app.routes.search import json_response
 
 family_bp = Blueprint('family', __name__)
 
@@ -21,18 +23,26 @@ def get_priority(role):
     return role_priority.get(role, role_priority["інше"])
 
 
-@family_bp.route('/<family_uuid>')
-def get_family_members(family_uuid):
-    print(family_uuid)
+@lru_cache(maxsize=4096)
+def _get_family(family_uuid):
     result = (
         EvictedPerson.query
         .filter(EvictedPerson.family_uuid == family_uuid)
         .order_by(desc(EvictedPerson.full_name))
         .all()
     )
-
     data = [person.to_dict() for person in result]
-    sorted_data = sorted(data, key=lambda x: get_priority(x["family_role"]))
-    response_body = json.dumps(sorted_data, ensure_ascii=False)
+    return sorted(data, key=lambda x: get_priority(x["family_role"]))
 
-    return Response(response_body, mimetype='application/json; charset=utf-8')
+
+@family_bp.route('/<family_uuid>')
+def get_family_members(family_uuid):
+    try:
+        family_uuid = uuid.UUID(family_uuid)
+    except ValueError:
+        abort(404)
+
+    members = _get_family(family_uuid)
+    if not members:
+        abort(404)
+    return json_response(members)
