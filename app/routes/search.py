@@ -1,7 +1,7 @@
 from functools import lru_cache
 from flask import Blueprint, Response, request
 import json
-from sqlalchemy import desc, distinct, func
+from sqlalchemy import desc, func
 from app.models.evicted_person import EvictedPerson
 
 search_bp = Blueprint('search', __name__)
@@ -45,17 +45,19 @@ def _search(search_query, limit, offset):
     total = base_query.with_entities(func.count()).scalar()
 
     # Facets computed in SQL instead of loading every matching row into Python
-    last_name_expr = func.split_part(EvictedPerson.full_name, ' ', 1)
+    last_name_expr = func.split_part(EvictedPerson.full_name, ' ', 1).label('last_name')
     last_names = [
-        row[0] for row in base_query
-        .with_entities(distinct(last_name_expr))
+        row.last_name for row in base_query
+        .with_entities(last_name_expr)
+        .distinct()
         .order_by(last_name_expr)
         .limit(MAX_FACETS)
     ]
     area_evictions = [
-        row[0] for row in base_query
+        row.area_eviction for row in base_query
         .filter(EvictedPerson.area_eviction.isnot(None))
-        .with_entities(distinct(EvictedPerson.area_eviction))
+        .with_entities(EvictedPerson.area_eviction)
+        .distinct()
         .order_by(EvictedPerson.area_eviction)
         .limit(MAX_FACETS)
     ]
