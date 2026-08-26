@@ -8,6 +8,8 @@ search_bp = Blueprint('search', __name__)
 
 MAX_LIMIT = 50
 MAX_FACETS = 50
+MAX_QUERY_LEN = 100  # chars
+MAX_WORDS = 5        # each word becomes an ILIKE clause
 
 # Names in the DB use both the typographic (’) and ASCII (') apostrophe
 APOSTROPHES = "'’ʼ‘`"
@@ -87,7 +89,7 @@ def _search(search_query, limit, offset):
 
 @search_bp.route('/evicted_persons')
 def evicted_persons():
-    search_query = ' '.join(request.args.get('query', '').split())
+    search_query = ' '.join(request.args.get('query', '')[:MAX_QUERY_LEN].split()[:MAX_WORDS])
     limit = min(request.args.get('limit', 20, type=int), MAX_LIMIT)
     offset = max(request.args.get('offset', 0, type=int), 0)
 
