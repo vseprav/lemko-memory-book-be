@@ -25,6 +25,18 @@ class EvictedPerson(db.Model):
 
     family = db.relationship('Family')
 
+    def settlement_id(self):
+        """The register entry behind the person's place, when the book points at exactly one:
+        the village named for the family, or the only settlement of their list. Else None."""
+        family = self.family
+        if family is None:
+            return None
+        if family.settlement_id is not None:
+            return family.settlement_id
+        if family.book_list is not None and len(family.book_list.settlements) == 1:
+            return family.book_list.settlements[0].id
+        return None
+
     def to_dict(self):
         family = self.family
         return {
@@ -36,4 +48,6 @@ class EvictedPerson(db.Model):
             'area_eviction': self.area_eviction,
             # The heading printed above the book's list; the old free-text column only when the family has no list
             'settlement': (family.settlement_label() if family else None) or self.settlement,
+            # For linking to the settlement filter; null when the list covers several villages
+            'settlement_id': self.settlement_id(),
         }

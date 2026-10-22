@@ -50,6 +50,21 @@ python3 spec/settlements/tools/make_seed_files.py lemko-memory-book-be/migration
 The `settlement` string in search and family responses is now the heading printed above the
 book's list the family was read from (e.g. `Дошниця – Тиханя`).
 
+## Search filters
+
+`GET /search/evicted_persons` takes, besides `query`, `limit` and `offset`:
+
+- `settlement=<settlements.id>`: people whose family the book places in that settlement, or whose
+  family's list covers it without naming one village (so Дошниця also returns `Дошниця – Тиханя`).
+- `area=<area_eviction>`: exact match on the area of eviction as printed (not normalized).
+
+Filters work without `query`; the 3-character minimum applies to the text only. The response has
+facets `last_names`, `area_evictions` and `settlements` (`[{id, name, note, count}]`, top 50 by count),
+and each item carries `settlement_id` when the book points at exactly one register entry.
+
+Dropdown data: `GET /settlements` (every register entry with alt names, note, 1939 powiat and people
+count) and `GET /search/area_evictions` (every printed value with its count).
+
 ## Other commands
 
 ```bash
