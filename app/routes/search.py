@@ -2,7 +2,9 @@ from functools import lru_cache
 from flask import Blueprint, Response, request
 import json
 from sqlalchemy import desc, func
+from sqlalchemy.orm import selectinload
 from app.models.evicted_person import EvictedPerson
+from app.models.settlement import Family, SettlementList
 
 search_bp = Blueprint('search', __name__)
 
@@ -23,6 +25,13 @@ def json_response(data, status=200):
                     mimetype='application/json; charset=utf-8')
     resp.headers['Cache-Control'] = f'public, max-age={CACHE_MAX_AGE}'
     return resp
+
+
+# Loads family -> list -> settlements for a page of people in a few queries instead of one per person
+load_settlement_info = selectinload(EvictedPerson.family).options(
+    selectinload(Family.book_list).selectinload(SettlementList.settlements),
+    selectinload(Family.settlement),
+)
 
 
 def escape_for_like(text):
@@ -69,6 +78,7 @@ def _search(search_query, limit, offset):
     prefix_pattern = f"{escape_for_like(search_query)}%"
     items = (
         base_query
+        .options(load_settlement_info)
         .order_by(
             desc(EvictedPerson.full_name.ilike(prefix_pattern)),
             EvictedPerson.full_name,

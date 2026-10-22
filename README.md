@@ -31,6 +31,25 @@ Point the frontend at it via `lemko-memory-book-fe/.env.local`:
 REACT_APP_API_URL=http://localhost:5001
 ```
 
+## Settlement data
+
+`settlements`, `settlement_lists`, `settlement_list_settlements` and `families` hold the book's
+register of settlements and name lists, and link every family to the list it was read from.
+Migrations `0002` and `0003` create and fill them from `migrations/data/*.csv`, so `flask db upgrade`
+(run by `startup.sh` on Azure) is all that is needed. The book is the source of truth: values are
+stored as printed, nothing is corrected.
+
+The CSVs are generated from the book HTML by the scripts in `../spec/settlements/tools`
+(see `../spec/settlements/README.md`); regenerate them with:
+
+```bash
+cd ..   # the lemko folder
+python3 spec/settlements/tools/make_seed_files.py lemko-memory-book-be/migrations/data
+```
+
+The `settlement` string in search and family responses is now the heading printed above the
+book's list the family was read from (e.g. `Дошниця – Тиханя`).
+
 ## Other commands
 
 ```bash
