@@ -74,13 +74,19 @@ def settlement_filter(settlement_id):
 def _search(search_query, settlement_id, area, limit, offset):
     # Every word must match somewhere in the name, in any order
     words = search_query.split()
-    filters = [EvictedPerson.full_name.ilike(f"%{escape_for_like(word)}%") for word in words]
-    if area:
-        filters.append(EvictedPerson.area_eviction == area)  # the value as printed in the book
-    base_query = EvictedPerson.query.filter(*filters)
-    if settlement_id:
-        base_query = base_query.join(Family).filter(settlement_filter(settlement_id))
+    name_filters = [EvictedPerson.full_name.ilike(f"%{escape_for_like(word)}%") for word in words]
 
+    def people(with_area=True, with_settlement=True):
+        """People matching the text and, optionally, each filter. A facet leaves out its own
+        filter so the dropdown keeps offering the alternatives (and their counts)."""
+        query = EvictedPerson.query.filter(*name_filters).join(Family)
+        if area and with_area:
+            query = query.filter(EvictedPerson.area_eviction == area)  # the value as printed in the book
+        if settlement_id and with_settlement:
+            query = query.filter(settlement_filter(settlement_id))
+        return query
+
+    base_query = people()
     total = base_query.with_entities(func.count()).scalar()
 
     # Facets computed in SQL instead of loading every matching row into Python
@@ -92,25 +98,23 @@ def _search(search_query, settlement_id, area, limit, offset):
         .order_by(last_name_expr)
         .limit(MAX_FACETS)
     ]
-    area_evictions = [
-        row.area_eviction for row in base_query
-        .filter(EvictedPerson.area_eviction.isnot(None))
-        .with_entities(EvictedPerson.area_eviction)
-        .distinct()
-        .order_by(EvictedPerson.area_eviction)
-        .limit(MAX_FACETS)
-    ]
     people_count = func.count(EvictedPerson.id).label('count')
-    settlements_query = base_query if settlement_id else base_query.join(Family)
+    area_evictions = [
+        {'value': row.area_eviction, 'count': row.count}
+        for row in people(with_area=False)
+        .filter(EvictedPerson.area_eviction.isnot(None))
+        .with_entities(EvictedPerson.area_eviction, people_count)
+        .group_by(EvictedPerson.area_eviction)
+        .order_by(desc(people_count), EvictedPerson.area_eviction)
+    ]
     settlements = [
         {'id': row.id, 'name': row.name, 'note': row.note, 'count': row.count}
-        for row in settlements_query
+        for row in people(with_settlement=False)
         .join(settlement_list_settlements, PERSON_IN_LIST_SETTLEMENT)
         .join(Settlement, Settlement.id == settlement_list_settlements.c.settlement_id)
         .with_entities(Settlement.id, Settlement.name, Settlement.note, people_count)
         .group_by(Settlement.id)
         .order_by(desc(people_count), Settlement.name)
-        .limit(MAX_FACETS)
     ]
 
     # Names starting with the query rank first; then alphabetical.
