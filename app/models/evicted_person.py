@@ -19,6 +19,15 @@ class EvictedPerson(db.Model):
     area_id = db.Column(db.Integer, db.ForeignKey('areas.id'))  # null when the value is empty
     settlement = db.Column(db.Text, nullable=False)
 
+    # Where the row is printed; filled by the data repair (lemko/spec/data-audit), null until then
+    list_id = db.Column(db.Integer, db.ForeignKey('settlement_lists.id'))
+    book_tr = db.Column(db.Integer)  # <tr> index inside the list's table in the book HTML; the row's key
+    book_row_no = db.Column(db.Integer)  # data-row number inside the list, from 0
+    family_position = db.Column(db.SmallInteger)  # position inside the family in book order, from 1
+    # 'person', or 'note' for a row the book prints instead of names ("Родина №7 - заклеєно стор. - 4 особи.")
+    row_kind = db.Column(db.Text, nullable=False, default='person', server_default='person')
+    persons_represented = db.Column(db.SmallInteger)  # for a note row: how many people it stands for
+
     # Automatically set the current timestamp on creation
     created_at = db.Column(DateTime, default=datetime.utcnow)
 

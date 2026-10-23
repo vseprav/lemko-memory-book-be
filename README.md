@@ -40,15 +40,22 @@ Migrations `0002` and `0003` create and fill them from `migrations/data/*.csv`, 
 stored as printed, nothing is corrected.
 
 The CSVs are generated from the book HTML by the scripts in `../spec/settlements/tools`
-(see `../spec/settlements/README.md`); regenerate them with:
+(see `../spec/settlements/README.md`); the generator also reads the per-list files of the data
+audit in `../spec/data-audit/data`. Regenerate them with:
 
 ```bash
 cd ..   # the lemko folder
 python3 spec/settlements/tools/make_seed_files.py lemko-memory-book-be/migrations/data
 ```
 
-The `settlement` string in search and family responses is now the heading printed above the
-book's list the family was read from (e.g. `Дошниця – Тиханя`).
+Migration `0006` brings the list rows of an existing database in line with the regenerated file:
+the data audit (`../spec/data-audit`) found that the first seed carried a block's 1944–46 division
+too far (110 lists), took 21 headings from parser file names and missed 5 total rows. It also fills
+`book_page` (the list's start page as printed in the table of contents) and `list_total_families`
+(the family count of the list's own total row, as printed).
+
+The `settlement` string in search and family responses is the heading printed above the
+book's list the family was read from (e.g. `Дошниця – Тиханя (від №88)`).
 
 ## Area of eviction
 
@@ -59,6 +66,27 @@ migration `0004`, with the data in `migrations/data/oblasts.csv` and `areas.csv`
 `GET /oblasts` lists the oblasts with people counts; the search takes `oblast=<id>` and returns
 an `oblasts` facet. `area=<printed value>` and the `area_evictions` facet remain for the
 frontend version before the oblast filter.
+
+Migration `0007` replaces the register values that were the old parser's glued readings of
+two-line cells (`Сталінська, ниніДонецька`) with the printed readings, following
+`migrations/data/areas_renamed.csv`. Until the data repair rewrites the person rows, the
+`area_eviction` text of 118 people still shows the old reading while their `area_id` and the
+oblast filter are right.
+
+## Book positions and the data repair
+
+Migration `0005` adds the columns that the data repair planned in
+`../spec/data-audit/execution-plan.md` fills; they are empty until it runs:
+
+- `evicted_persons`: `list_id`, `book_tr` (the row's `<tr>` index inside the list's table in the
+  book HTML, the row's key), `book_row_no`, `family_position` (book order inside the family),
+  `row_kind` (`person`, or `note` for a row the book prints instead of names) and
+  `persons_represented`.
+- `families`: `printed_no` (the family number as printed: `12`, `138-1`, `4?`), `kind`
+  (`numbered`, `individual`, `unnumbered_household`, `unnumbered_group`), `book_seq` and the
+  printed `section` the family stands under.
+- `family_aliases`: family uuids retired by the regrouping, so old links keep resolving.
+- `data_repairs`: log of applied repairs.
 
 ## Search filters
 
