@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 from dotenv import load_dotenv
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-from app.routes import search_bp, family_bp, settlements_bp
+from app.routes import search_bp, family_bp, settlements_bp, oblasts_bp
 from app.extensions import db, limiter
 from app.seeds.first_tom import seed_evicted_persons
 
@@ -50,5 +50,6 @@ def create_app(test_config=None):
     app.register_blueprint(search_bp, url_prefix='/search')
     app.register_blueprint(family_bp, url_prefix='/family')
     app.register_blueprint(settlements_bp, url_prefix='/settlements')
+    app.register_blueprint(oblasts_bp, url_prefix='/oblasts')
 
     return app

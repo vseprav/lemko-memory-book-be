@@ -4,6 +4,7 @@ from datetime import datetime
 from sqlalchemy import Column, DateTime
 from app.extensions import db
 from app.models.settlement import Family  # noqa: F401  (registers the mapper for the relationship)
+from app.models.area import Area  # noqa: F401
 
 
 class EvictedPerson(db.Model):
@@ -14,7 +15,8 @@ class EvictedPerson(db.Model):
     full_name = db.Column(db.Text, nullable=False)
     family_role = db.Column(db.Text, nullable=True)
     birth_year = db.Column(db.Text, nullable=True)
-    area_eviction = db.Column(db.Text, nullable=True)
+    area_eviction = db.Column(db.Text, nullable=True)  # as printed; areas.printed holds the same text
+    area_id = db.Column(db.Integer, db.ForeignKey('areas.id'))  # null when the value is empty
     settlement = db.Column(db.Text, nullable=False)
 
     # Automatically set the current timestamp on creation
@@ -24,6 +26,7 @@ class EvictedPerson(db.Model):
     updated_at = db.Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     family = db.relationship('Family')
+    area = db.relationship('Area')
 
     def settlement_id(self):
         """The register entry behind the person's place, when the book points at exactly one:

@@ -3,6 +3,7 @@ from flask import Blueprint, Response, request
 import json
 from sqlalchemy import and_, desc, func, or_, select
 from sqlalchemy.orm import selectinload
+from app.models.area import Area, Oblast
 from app.models.evicted_person import EvictedPerson
 from app.models.settlement import Family, Settlement, SettlementList, settlement_list_settlements
 
@@ -20,7 +21,7 @@ APOSTROPHES = "'’ʼ‘`"
 
 CACHE_MAX_AGE = 86400  # data is static; let browsers/CDN cache responses for a day
 
-EMPTY_RESULT = {'total': 0, 'last_names': [], 'area_evictions': [], 'settlements': [], 'items': []}
+EMPTY_RESULT = {'total': 0, 'last_names': [], 'area_evictions': [], 'oblasts': [], 'settlements': [], 'items': []}
 
 
 def json_response(data, status=200):
@@ -71,7 +72,7 @@ def settlement_filter(settlement_id):
 
 
 @lru_cache(maxsize=2048)
-def _search(search_query, settlement_id, area, limit, offset):
+def _search(search_query, settlement_id, area, oblast_id, limit, offset):
     # Every word must match somewhere in the name, in any order
     words = search_query.split()
     name_filters = [EvictedPerson.full_name.ilike(f"%{escape_for_like(word)}%") for word in words]
@@ -82,6 +83,9 @@ def _search(search_query, settlement_id, area, limit, offset):
         query = EvictedPerson.query.filter(*name_filters).join(Family)
         if area and with_area:
             query = query.filter(EvictedPerson.area_eviction == area)  # the value as printed in the book
+        if oblast_id and with_area:
+            # Every printed variant the book links to this oblast ("Сталінська", "Сталінська, нині Донецька", …)
+            query = query.filter(EvictedPerson.area_id.in_(select(Area.id).where(Area.oblast_id == oblast_id)))
         if settlement_id and with_settlement:
             query = query.filter(settlement_filter(settlement_id))
         return query
@@ -106,6 +110,15 @@ def _search(search_query, settlement_id, area, limit, offset):
         .with_entities(EvictedPerson.area_eviction, people_count)
         .group_by(EvictedPerson.area_eviction)
         .order_by(desc(people_count), EvictedPerson.area_eviction)
+    ]
+    oblasts = [
+        {'id': row.id, 'name': row.name, 'modern_name': row.modern_name, 'count': row.count}
+        for row in people(with_area=False)
+        .join(Area, Area.id == EvictedPerson.area_id)
+        .join(Oblast, Oblast.id == Area.oblast_id)
+        .with_entities(Oblast.id, Oblast.name, Oblast.modern_name, people_count)
+        .group_by(Oblast.id)
+        .order_by(desc(people_count), Oblast.name)
     ]
     settlements = [
         {'id': row.id, 'name': row.name, 'note': row.note, 'count': row.count}
@@ -135,7 +148,8 @@ def _search(search_query, settlement_id, area, limit, offset):
     return {
         'total': total,
         'last_names': last_names,
-        'area_evictions': area_evictions,
+        'area_evictions': area_evictions,  # printed values; kept for the frontend version before the oblast filter
+        'oblasts': oblasts,
         'settlements': settlements,
         'items': [person.to_dict() for person in items],
     }
@@ -145,16 +159,17 @@ def _search(search_query, settlement_id, area, limit, offset):
 def evicted_persons():
     search_query = ' '.join(request.args.get('query', '')[:MAX_QUERY_LEN].split()[:MAX_WORDS])
     settlement_id = request.args.get('settlement', 0, type=int)
-    area = ' '.join(request.args.get('area', '')[:MAX_QUERY_LEN].split())
+    oblast_id = request.args.get('oblast', 0, type=int)
+    area = ' '.join(request.args.get('area', '')[:MAX_QUERY_LEN].split())  # printed value; older frontend
     limit = min(request.args.get('limit', 20, type=int), MAX_LIMIT)
     offset = max(request.args.get('offset', 0, type=int), 0)
 
     if len(search_query) < MIN_QUERY_LEN:
         search_query = ''
-    if not search_query and not settlement_id and not area:
+    if not search_query and not settlement_id and not area and not oblast_id:
         return json_response(EMPTY_RESULT)
 
-    return json_response(_search(search_query, settlement_id, area, limit, offset))
+    return json_response(_search(search_query, settlement_id, area, oblast_id, limit, offset))
 
 
 @lru_cache(maxsize=1)
