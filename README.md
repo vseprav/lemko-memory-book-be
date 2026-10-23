@@ -88,6 +88,21 @@ Migration `0005` adds the columns that the data repair planned in
 - `family_aliases`: family uuids retired by the regrouping, so old links keep resolving.
 - `data_repairs`: log of applied repairs.
 
+The repair itself is `flask repair-book-data`, from `app/commands/repair_book_data.py`. It reads
+`migrations/data/repair/` (built by `../spec/data-audit/tools/build_repair_files.py` from the
+audit's plan): every printed row with its values as printed and its family, every book entity,
+the retired family uuids, and what every list must hold afterwards. It inserts the 7,602 missing
+people and 2,594 families, moves 1,116 people to the family the book prints them in, rewrites the
+cells that differed from the book, fills the book positions, relinks `area_id`, retires 36
+families into aliases and logs itself in `data_repairs`, all in one transaction, and rolls back
+unless every check passes. Without `--apply` it is a dry run; `--again` after an apply must
+report no changes. It is run deliberately against a database, never from `startup.sh`:
+
+```bash
+./venv/bin/flask --app wsgi repair-book-data          # dry run against DATABASE_URI
+./venv/bin/flask --app wsgi repair-book-data --apply
+```
+
 ## Search filters
 
 `GET /search/evicted_persons` takes, besides `query`, `limit` and `offset`:

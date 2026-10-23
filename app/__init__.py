@@ -10,6 +10,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 from app.routes import search_bp, family_bp, settlements_bp, oblasts_bp
 from app.extensions import db, limiter
 from app.seeds.first_tom import seed_evicted_persons
+from app.commands.repair_book_data import repair_book_data
 
 
 def create_app(test_config=None):
@@ -35,6 +36,8 @@ def create_app(test_config=None):
 
     # Add the seed_db command to the app
     app.cli.add_command(seed_evicted_persons)
+    # One-off data repair from the book (lemko/spec/data-audit); run deliberately, never at startup
+    app.cli.add_command(repair_book_data)
 
     @app.errorhandler(429)
     def ratelimit_handler(e):
