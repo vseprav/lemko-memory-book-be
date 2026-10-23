@@ -62,4 +62,9 @@ class EvictedPerson(db.Model):
             'settlement': (family.settlement_label() if family else None) or self.settlement,
             # For linking to the settlement filter; null when the list covers several villages
             'settlement_id': self.settlement_id(),
+            # Book order inside the family, from 1 (null before the data repair)
+            'family_position': self.family_position,
+            # 'note' for a row the book prints instead of names; persons_represented says for how many
+            'row_kind': self.row_kind,
+            'persons_represented': self.persons_represented,
         }

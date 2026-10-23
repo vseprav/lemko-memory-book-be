@@ -18,6 +18,7 @@ def _oblasts():
         for oblast, count in Oblast.query
         .join(Area, Area.oblast_id == Oblast.id)
         .join(EvictedPerson, EvictedPerson.area_id == Area.id)
+        .filter(EvictedPerson.row_kind == 'person')  # the same people the search finds
         .with_entities(Oblast, people_count)
         .group_by(Oblast.id)
         .order_by(desc(people_count), Oblast.name)

@@ -15,6 +15,7 @@ def _settlements():
     counts = dict(
         db.session.query(settlement_list_settlements.c.settlement_id, func.count(EvictedPerson.id))
         .select_from(EvictedPerson)
+        .filter(EvictedPerson.row_kind == 'person')  # the same people the search finds
         .join(Family)
         .join(settlement_list_settlements, PERSON_IN_LIST_SETTLEMENT)
         .group_by(settlement_list_settlements.c.settlement_id)

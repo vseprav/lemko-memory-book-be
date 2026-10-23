@@ -117,6 +117,15 @@ class Family(db.Model):
     book_list = db.relationship('SettlementList')
     settlement = db.relationship('Settlement')
 
+    def to_dict(self):
+        return {
+            'family_uuid': str(self.family_uuid),
+            'printed_no': self.printed_no,
+            'kind': self.kind,
+            'book_seq': self.book_seq,
+            'section': self.section,
+        }
+
     def settlement_label(self):
         """What to show as the person's place: the heading printed above the list, or the village
         the book names for this family inside a group list such as 'Села повіту Сянік: …'."""

@@ -79,8 +79,9 @@ def _search(search_query, settlement_id, area, oblast_id, limit, offset):
 
     def people(with_area=True, with_settlement=True):
         """People matching the text and, optionally, each filter. A facet leaves out its own
-        filter so the dropdown keeps offering the alternatives (and their counts)."""
-        query = EvictedPerson.query.filter(*name_filters).join(Family)
+        filter so the dropdown keeps offering the alternatives (and their counts). Note rows
+        ('Родина №7 - заклеєно стор. - 4 особи.') are not people and are never found."""
+        query = EvictedPerson.query.filter(EvictedPerson.row_kind == 'person', *name_filters).join(Family)
         if area and with_area:
             query = query.filter(EvictedPerson.area_eviction == area)  # the value as printed in the book
         if oblast_id and with_area:
@@ -178,7 +179,7 @@ def _area_evictions():
     return [
         {'value': row.area_eviction, 'count': row.count}
         for row in EvictedPerson.query
-        .filter(EvictedPerson.area_eviction.isnot(None))
+        .filter(EvictedPerson.area_eviction.isnot(None), EvictedPerson.row_kind == 'person')
         .with_entities(EvictedPerson.area_eviction, people_count)
         .group_by(EvictedPerson.area_eviction)
         .order_by(desc(people_count), EvictedPerson.area_eviction)
