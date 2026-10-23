@@ -1,8 +1,9 @@
 import uuid
 from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
-from sqlalchemy import Column, DateTime
+from sqlalchemy import Column, DateTime, event
 from app.extensions import db
+from app.search_names import name_search
 from app.models.settlement import Family  # noqa: F401  (registers the mapper for the relationship)
 from app.models.area import Area  # noqa: F401
 
@@ -27,6 +28,8 @@ class EvictedPerson(db.Model):
     # 'person', or 'note' for a row the book prints instead of names ("Родина №7 - заклеєно стор. - 4 особи.")
     row_kind = db.Column(db.Text, nullable=False, default='person', server_default='person')
     persons_represented = db.Column(db.SmallInteger)  # for a note row: how many people it stands for
+    # Every way to type the printed name (app/search_names.py); kept in step with full_name below
+    name_search = db.Column(db.Text)
 
     # Automatically set the current timestamp on creation
     created_at = db.Column(DateTime, default=datetime.utcnow)
@@ -68,3 +71,10 @@ class EvictedPerson(db.Model):
             'row_kind': self.row_kind,
             'persons_represented': self.persons_represented,
         }
+
+
+@event.listens_for(EvictedPerson, 'before_insert')
+@event.listens_for(EvictedPerson, 'before_update')
+def _keep_name_search(mapper, connection, person):
+    """Rows written through the ORM (seed_db, future imports) get their search text like migration 0008."""
+    person.name_search = name_search(person.full_name)

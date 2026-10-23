@@ -6,6 +6,7 @@ from sqlalchemy.orm import selectinload
 from app.models.area import Area, Oblast
 from app.models.evicted_person import EvictedPerson
 from app.models.settlement import Family, Settlement, SettlementList, settlement_list_settlements
+from app.search_names import query_words
 
 search_bp = Blueprint('search', __name__)
 
@@ -36,6 +37,11 @@ load_settlement_info = selectinload(EvictedPerson.family).options(
     selectinload(Family.book_list).selectinload(SettlementList.settlements),
     selectinload(Family.settlement),
 )
+
+
+def escape_like(text):
+    """Escape LIKE wildcards in an already normalized word."""
+    return text.replace('\\', '\\\\').replace('%', '\\%').replace('_', '\\_')
 
 
 def escape_for_like(text):
@@ -73,9 +79,10 @@ def settlement_filter(settlement_id):
 
 @lru_cache(maxsize=2048)
 def _search(search_query, settlement_id, area, oblast_id, limit, offset):
-    # Every word must match somewhere in the name, in any order
-    words = search_query.split()
-    name_filters = [EvictedPerson.full_name.ilike(f"%{escape_for_like(word)}%") for word in words]
+    # Every word must match somewhere in the name, in any order. name_search holds every way to type
+    # the printed name (brackets, both genders of a surname, no apostrophes; app/search_names.py), and
+    # the query is normalized the same way, so a plain substring match is enough.
+    name_filters = [EvictedPerson.name_search.like(f"%{escape_like(word)}%") for word in query_words(search_query)]
 
     def people(with_area=True, with_settlement=True):
         """People matching the text and, optionally, each filter. A facet leaves out its own
@@ -165,8 +172,8 @@ def evicted_persons():
     limit = min(request.args.get('limit', 20, type=int), MAX_LIMIT)
     offset = max(request.args.get('offset', 0, type=int), 0)
 
-    if len(search_query) < MIN_QUERY_LEN:
-        search_query = ''
+    if len(search_query) < MIN_QUERY_LEN or not query_words(search_query):
+        search_query = ''  # too short, or nothing left to search for once normalized ("???")
     if not search_query and not settlement_id and not area and not oblast_id:
         return json_response(EMPTY_RESULT)
 

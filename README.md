@@ -103,6 +103,18 @@ report no changes. It is run deliberately against a database, never from `startu
 ./venv/bin/flask --app wsgi repair-book-data --apply
 ```
 
+## Search text
+
+`query` is matched against `evicted_persons.name_search`, not the printed `full_name`. Migration
+`0008` fills it from `app/search_names.py`: the printed name normalized (lower case, no apostrophes,
+brackets and punctuation as spaces), every reading of a bracket inside a word (`Ко(а)чмарчик` finds
+`Качмарчик` and `Кочмарчик`), split words joined and glued words split, and for a surname the book
+prints in both genders the other form (`app/data/surname_pairs.csv`: `Криницький` finds `Криницька`).
+The query gets the same normalization, and each of its words must be a substring of `name_search`.
+Rows written through the ORM get their `name_search` on insert and update. The printed name is what
+the API returns and shows. Tests against the data audit's findings:
+`../spec/data-audit/tools/test_search_names.py`.
+
 ## Search filters
 
 `GET /search/evicted_persons` takes, besides `query`, `limit` and `offset`:
