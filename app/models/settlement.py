@@ -29,6 +29,12 @@ class Settlement(db.Model):
     powiat = db.Column(db.Text)
     gmina = db.Column(db.Text)
     printed = db.Column(db.Text, nullable=False)
+    # Not book data: Wikipedia links where unambiguous (migration 0009); null when there is none
+    wikidata_id = db.Column(db.Text)
+    wikipedia_uk = db.Column(db.Text)  # article title on uk.wikipedia.org
+    wikipedia_pl = db.Column(db.Text)
+    wikipedia_en = db.Column(db.Text)
+    name_pl = db.Column(db.Text)  # current Polish name (Wikidata label)
 
     def to_dict(self):
         return {
@@ -48,6 +54,14 @@ class Settlement(db.Model):
             'powiat': self.powiat,
             'gmina': self.gmina,
             'printed': self.printed,
+            # Kept apart from the book's fields; null when the settlement has no linked article
+            'wikipedia': {
+                'wikidata_id': self.wikidata_id,
+                'uk': self.wikipedia_uk,
+                'pl': self.wikipedia_pl,
+                'en': self.wikipedia_en,
+                'name_pl': self.name_pl,
+            } if self.wikidata_id else None,
         }
 
 

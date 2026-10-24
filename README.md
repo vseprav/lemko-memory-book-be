@@ -103,6 +103,15 @@ report no changes. It is run deliberately against a database, never from `startu
 ./venv/bin/flask --app wsgi repair-book-data --apply
 ```
 
+## Wikipedia links
+
+Migration `0009` adds `wikidata_id`, `wikipedia_uk`, `wikipedia_pl`, `wikipedia_en` and `name_pl` to
+`settlements`, from `migrations/data/settlements_wikipedia.csv`. Settlement responses carry them as
+`wikipedia` (null when there is no link); the family page fetches the article summary from Wikipedia
+in the browser. Wikipedia is not book data and never changes a book value. Links are taken only where
+unambiguous; the file is built by `../spec/settlements/tools/make_wiki_seed.py`, which also writes the
+entries left for a hand review. A review result needs a new migration to load it.
+
 ## Search text
 
 `query` is matched against `evicted_persons.name_search`, not the printed `full_name`. Migration

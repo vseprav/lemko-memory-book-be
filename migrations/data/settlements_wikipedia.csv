@@ -1,0 +1,322 @@
+settlement_id,wikidata_id,wikipedia_uk,wikipedia_pl,wikipedia_en,name_pl
+1,Q4759768,Андріївка (Новосондецький повіт),Andrzejówka (województwo małopolskie),"Andrzejówka, Lesser Poland Voivodeship",Andrzejówka
+2,Q2924775,Андрушківці,Jędruszkowce,Jędruszkowce,Jędruszkowce
+3,Q3496277,Балигород,Baligród,Baligród,Baligród
+4,Q4875324,Балутянка,Bałucianka,Bałucianka,Bałucianka
+5,Q4852425,Бальниця,Balnica,Balnica,Balnica
+8,Q2702706,Барвінок (Польща),Barwinek (województwo podkarpackie),"Barwinek, Podkarpackie Voivodeship",Barwinek
+10,Q2654107,Бахлява,Bachlawa,Bachlawa,Bachlawa
+11,Q4900373,Безмігова Горішня,Bezmiechowa Górna,Bezmiechowa Górna,Bezmiechowa Górna
+12,Q4900374,Безмігова Долішня,Bezmiechowa Dolna,Bezmiechowa Dolna,Bezmiechowa Dolna
+13,Q4900412,Белхівка,Bełchówka,Bełchówka,Bełchówka
+16,Q8305807,Береги Горішні,Brzegi Górne,Brzegi Górne,Brzegi Górne
+17,Q4891368,Бережки (Польща),Bereżki,Bereżki,Bereżki
+21,Q4981401,Березова,Brzezowa (województwo podkarpackie),"Brzezowa, Podkarpackie Voivodeship",Brzezowa
+22,Q4981616,Березовець (Польща),Brzozowiec (Czaszyn),"Brzozowiec, Podkarpackie Voivodeship",Brzozowiec
+23,Q4891319,Берест (село),Berest,Berest,Berest
+24,Q2684009,Биківці (Польща),Bykowce,Bykowce,Bykowce
+29,Q11687915,Біла Вода,Biała Woda (Jaworki),,Biała Woda (województwo małopolskie)
+30,Q9171277,Білична,Bieliczna,,Bieliczna
+31,Q787006,Білянка (Польща),Bielanka (powiat gorlicki),"Bielanka, Gorlice County",Bielanka
+34,Q2182704,Бліхнарка,Blechnarka,Blechnarka,Blechnarka
+35,Q4937874,Богуша,Bogusza (wieś),Bogusza,Bogusza
+36,Q775310,Бодаки (Малопольське воєводство),Bodaki (województwo małopolskie),"Bodaki, Lesser Poland Voivodeship",Bodaki
+37,Q2304170,Боднарка,Bednarka (wieś),"Bednarka, Lesser Poland Voivodeship",Bednarka
+38,Q4941197,Бонарівка,Bonarówka,Bonarówka,Bonarówka
+39,Q4946477,Борівниця,Borownica (województwo podkarpackie),"Borownica, Podkarpackie Voivodeship",Borownica
+40,Q1850941,Бортне,Bartne,Bartne,Bartne
+41,Q1999113,Босько,Besko,Besko,Besko
+42,Q2070933,Братківка,Bratkówka,Bratkówka,Bratkówka
+44,Q4096267,Бреликів,Brelików,Brelików,Brelików
+47,Q4986789,Бук (Ліський повіт),Buk (województwo podkarpackie),"Buk, Podkarpackie Voivodeship",Buk
+48,Q2664126,Буківсько,Bukowsko,Bukowsko,Bukowsko
+52,Q5191950,Ванівка,Węglówka (województwo podkarpackie),"Węglówka, Podkarpackie Voivodeship",Węglówka
+54,Q2813569,Вапенне,Wapienne,Wapienne,Wapienne
+55,Q7968753,Вара (село),Wara,"Wara, Poland",Wara
+56,Q7975639,Вафка,Wawrzka,Wawrzka,Wawrzka
+57,Q9373126,Великополе (село),Wielopole (Zagórz),,Wielopole
+58,Q7983249,Веремінь,Weremień,Weremień,Weremień
+59,Q9372051,Вернеївка,Wernejówka,,Wernejówka
+60,Q2451717,Ветлина,Wetlina,Wetlina,Wetlina
+61,Q8039684,Видрна,Wydrna,Wydrna,Wydrna
+63,Q2457813,Вислік Великий,Wisłok Wielki,Wisłok Wielki,Wisłok Wielki
+67,Q2681932,Височани,Wysoczany,Wysoczany,Wysoczany
+68,Q8040632,Вишеватка,Wyszowatka,Wyszowatka,Wyszowatka
+69,Q8039129,Війське,Wujskie,Wujskie,Wujskie
+70,Q61112097,Вілька (Підкарпатське воєводство),,,Wilka
+71,Q8314762,Вільхівці (Бещадський повіт),Olchowiec (powiat bieszczadzki),"Olchowiec, Bieszczady County",Olchowiec
+72,Q7083305,Вільхова (Сяноцький повіт),Olchowa (powiat sanocki),"Olchowa, Sanok County",Olchowa
+73,Q7083312,Вільховець (Кросненський повіт),Olchowiec (powiat krośnieński),"Olchowiec, Podkarpackie Voivodeship",Olchowiec
+74,Q8023335,Вильшня,Wilsznia,Wilsznia,Wilsznia
+75,Q7088611,Вільшаниця (Ліський повіт),Olszanica (województwo podkarpackie),"Olszanica, Podkarpackie Voivodeship",Olszanica
+76,Q18759049,Вірхня,,,Wirchne
+79,Q8028524,Вітрилів,Witryłów,Witryłów,Witryłów
+80,Q5191967,Войкова,Wojkowa,Wojkowa,Wojkowa
+81,Q8029232,Войківка,Wojkówka,Wojkówka,Wojkówka
+84,Q2855659,Воловець (Малопольське воєводство),Wołowiec (województwo małopolskie),"Wołowiec, Lesser Poland Voivodeship",Wołowiec
+86,Q2594369,Волосате,Wołosate,Wołosate,Wołosate
+87,Q9378030,Волтушова,Wołtuszowa,,Wołtuszowa
+88,Q8029661,Воля Вижня,Wola Wyżna,Wola Wyżna,Wola Wyżna
+89,Q9377577,Воля Горянська,Wola Górzańska,,Wola Górzańska
+90,Q8029485,Воля Крецівська,Wola Krecowska,Wola Krecowska,Wola Krecowska
+91,Q8029514,Воля Матіяшова,Wola Matiaszowa,Wola Matiaszowa,Wola Matiaszowa
+92,Q8029520,Воля Мигова,Wola Michowa,Wola Michowa,Wola Michowa
+93,Q8029538,Воля Нижня,Wola Niżna,Wola Niżna,Wola Niżna
+94,Q2243863,Воля Петрова,Wola Piotrowa,Wola Piotrowa,Wola Piotrowa
+95,Q8029595,Воля Романова,Wola Romanowa,Wola Romanowa,Wola Romanowa
+97,Q9377595,Воля Постолова,Wola Postołowa,,Wola Postołowa
+98,Q4261816,Воля Цеклинська,Wola Cieklińska,Wola Cieklińska,Wola Cieklińska
+100,Q8038805,Вороблик Королівський,Wróblik Królewski,Wróblik Królewski,Wróblik Królewski
+101,Q8038806,Вороблик Шляхетський,Wróblik Szlachecki,Wróblik Szlachecki,Wróblik Szlachecki
+102,Q1850868,Габківці,Habkowce,Habkowce,Habkowce
+103,Q25668326,Галбів,,,Hałbów
+104,Q1973268,Ганчова,Hańczowa,Hańczowa,Hańczowa
+105,Q5623729,Гвоздянка,Gwoździanka,Gwoździanka,Gwoździanka
+107,Q1844869,Гирова,Chyrowa,Chyrowa,Chyrowa
+108,Q5936309,Гільське,Hulskie (osada),"Hulskie, Podkarpackie Voivodeship",Hulskie
+110,Q56845,Гладишів,Gładyszów,Gładyszów,Gładyszów
+111,Q5569741,Глинне (Ліський повіт),Glinne (województwo podkarpackie),Glinne,Glinne
+113,Q5965154,Гломча,Hłomcza,Hłomcza,Hłomcza
+114,Q1926610,Голучків,Hołuczków,Hołuczków,Hołuczków
+117,Q9293867,Городок (Ліський повіт),Horodek (Polska),,Horodek
+118,Q5626408,Горянка (Ліський повіт),Górzanka,Górzanka,Górzanka
+120,Q2653991,Граб (Польща),Grab (województwo podkarpackie),"Grab, Podkarpackie Voivodeship",Grab
+121,Q5590887,Грабівка (Польща),Grabówka (województwo podkarpackie),"Grabówka, Podkarpackie Voivodeship",Grabówka
+123,Q8261736,Гузелі,Huzele,Huzele,Huzele
+124,Q5950408,Гута Полянська,Huta Polańska,Huta Polańska,Huta Polańska
+125,Q5211019,Дальова,Daliowa,Daliowa,Daliowa
+126,Q667622,Дарів (Сяноцький повіт),Darów,Darów,Darów
+127,Q4155537,Дашівка,Daszówka (województwo podkarpackie),,Daszówka
+128,Q2646548,Дверник,Dwernik,Dwernik,Dwernik
+131,Q2281441,Дзвиняч-Долішній,Dźwiniacz Dolny,Dźwiniacz Dolny,Dźwiniacz Dolny
+132,Q5319950,Дзюрдзів,Dziurdziów,Dziurdziów,Dziurdziów
+134,Q2019720,Дидня,Dydnia,Dydnia,Dydnia
+137,Q5286904,Добрянка (гміна Бірча),Dobrzanka,Dobrzanka,Dobrzanka
+143,Q4261668,Дошниця,Desznica,Desznica,Desznica
+144,Q11694005,Дошно,Deszno (Rymanów-Zdrój),,Deszno (województwo podkarpackie)
+147,Q9249286,Дубрівка Руська,Dąbrówka Ruska,,Dąbrówka Ruska
+148,Q18424407,Дубрівка Польська,Dąbrówka Polska (Sanok),,Dąbrówka Polska
+149,Q1000424,Дудинці,Dudyńce,Dudyńce,Dudyńce
+150,Q5191858,Душатин (Польща),Duszatyn,Duszatyn,Duszatyn
+154,Q8083258,Жерденка,Żerdenka,Żerdenka,Żerdenka
+156,Q8083273,Жерниця Нижня,Żernica Niżna,Żernica Niżna,Żernica Niżna
+157,Q8083495,Жидівське,Żydowskie,Żydowskie,Żydowskie
+162,Q8067363,Завадка Морохівська,Zawadka Morochowska,Zawadka Morochowska,Zawadka Morochowska
+165,Q8067527,Завіз,Zawóz,Zawóz,Zawóz
+166,Q5191937,Завій (Польща),Zawój,Zawój,Zawój
+168,Q1946049,Загір'я (Польща),Zagórz,Zagórz,Zagórz
+172,Q2439499,Залужжя (Сяноцький повіт),Załuż,Załuż,Załuż
+177,Q8458056,Здвижень,Zwierzyń,"Zwierzyń, Podkarpackie Voivodeship",Zwierzyń
+178,Q1994151,Зиндранова,Zyndranowa,Zyndranowa,Zyndranowa
+179,Q8076162,Злоцьке,Złockie,Złockie,Złockie
+180,Q9392112,Зубенсько,Zubeńsko,,Zubeńsko
+181,Q8074965,Зубрик,Zubrzyk,Zubrzyk,Zubrzyk
+182,Q8083359,Зубряче,Żubracze,Żubracze,Żubracze
+184,Q4981929,Ізби,Izby,Izby,Izby
+185,Q5191976,Іздебки,Izdebki (województwo podkarpackie),"Izdebki, Podkarpackie Voivodeship",Izdebki
+189,Q782188,Кам'яна (Новосондецький повіт),Kamianna,Kamianna,Kamianna
+192,Q28704475,Кам’янки,,,
+193,Q2724645,Карликів,Karlików,Karlików,Karlików
+195,Q6405763,Кельчава,Kielczawa,Kiełczawa,Kiełczawa
+198,Q25668356,Клопітниця,,,
+199,Q6435545,Колониці (гміна Балигород),Kołonice (osada),"Kołonice, Podkarpackie Voivodeship",Kołonice
+200,Q1025253,Команча,Komańcza,Komańcza,Komańcza
+201,Q3735845,Конечна,Konieczna,Konieczna,Konieczna
+202,Q6440515,Королева Руська,Królowa Górna,Królowa Górna,Królowa Górna
+203,Q11750171,Королик Волоський,Królik Wołoski,,Królik Wołoski
+204,Q6440504,Королик Польський,Królik Polski,Królik Polski,Królik Polski
+206,Q2709795,Костарівці,Kostarowce,Kostarowce,Kostarowce
+207,Q2488356,Котань,Kotań,Kotań,Kotań
+210,Q31487,Краків,Kraków,Kraków,Kraków
+211,Q2686684,Крампна,Krempna,Krempna,Krempna
+212,Q5191986,Красна (Підкарпатське воєводство),Krasna (województwo podkarpackie),"Krasna, Podkarpackie Voivodeship",Krasna
+213,Q6436570,Креців,Kreców,Kreców,Kreców
+218,Q6439865,Кривка (Бещадський повіт),Krywka (Lutowiska),Krywka,Krywka
+219,Q6440411,Крижівка (Новосондецький повіт),Krzyżówka (województwo małopolskie),"Krzyżówka, Lesser Poland Voivodeship",Krzyżówka
+222,Q2592068,Куляшне,Kulaszne,Kulaszne,Kulaszne
+223,Q2111002,Кунькова,Kunkowa,Kunkowa,Kunkowa
+224,Q4231766,Кути (Підкарпатське воєводство),Kąty (województwo podkarpackie),"Kąty, Podkarpackie Voivodeship",Kąty
+225,Q2504023,Лабова,Łabowa,Łabowa,Łabowa
+226,Q8080333,Лабовець,Łabowiec (wieś),Łabowiec,Łabowiec
+228,Q3845215,Лелюхів,Leluchów,Leluchów,Leluchów
+230,Q3273936,Липна (Малопольське воєводство),Lipna (województwo małopolskie),"Lipna, Lesser Poland Voivodeship",Lipna
+231,Q5191423,Липовець (Польща),Lipowiec (województwo podkarpackie),"Lipowiec, Podkarpackie Voivodeship",Lipowiec
+232,Q599847,Липовиця (Польща),Lipowica (województwo podkarpackie),"Lipowica, Podkarpackie Voivodeship",Lipowica
+233,Q611086,Лісько,Lesko,Lesko,Lesko
+235,Q821399,Літовищі,Lutowiska,Lutowiska,Lutowiska
+239,Q6532087,Ліщовате,Leszczowate,Leszczowate,Leszczowate
+240,Q8080643,Лобізва,Łobozew Górny,Łobozew Górny,Łobozew Górny
+247,Q8248984,Лубне,Łubne,Łubne,Łubne
+251,Q8261963,Лукавиця (Ліський повіт),Łukawica (powiat leski),"Łukawica, Lesko County",Łukawica
+252,Q8081016,Лукове (Сяноцький повіт),Łukowe,Łukowe,Łukowe
+255,Q6468313,Ляхава,Lachowa,Lachawa,Lachawa
+256,Q3274877,Маластів,Małastów,Małastów,Małastów
+257,Q6743798,Малинівка (Польща),Malinówka (województwo podkarpackie),"Malinówka, Podkarpackie Voivodeship",Malinówka
+258,Q5191478,Манів,Maniów (województwo podkarpackie),"Maniów, Podkarpackie Voivodeship",Maniów
+259,Q2716364,Марківці (Сяноцький повіт),Markowce,Markowce,Markowce
+261,Q6724046,Матієва,Maciejowa (wieś),"Maciejowa, Lesser Poland Voivodeship",Maciejowa
+262,Q3207756,Мацина Велика,Męcina Wielka,Męcina Wielka,Męcina Wielka
+263,Q2969058,Межибрід,Międzybrodzie,Międzybrodzie,Międzybrodzie
+264,Q1863891,Миків (Сяноцький повіт),Mików,Mików,Mików
+265,Q2479053,Милик,Milik,Milik,Milik
+266,Q6947800,Мимонь,Mymoń,Mymoń,Mymoń
+269,Q770302,Мичків,Myczków,Myczków,Myczków
+270,Q505899,Мичківці,Myczkowce,Myczkowce,Myczkowce
+272,Q2191891,Монастирець (Ліський повіт),Manasterzec,Manasterzec,Manasterzec
+273,Q2003241,Морохів,Morochów,Morochów,Morochów
+275,Q6887629,Мохначка Нижня,Mochnaczka Niżna,Mochnaczka Niżna,Mochnaczka Niżna
+276,Q2420855,Мощанець,Moszczaniec,Moszczaniec,Moszczaniec
+277,Q2031331,Мриголод,Mrzygłód,Mrzygłód,Mrzygłód
+278,Q1642884,Мушина,Muszyna,Muszyna,Muszyna
+279,Q2566924,Мушинка (Малопольське воєводство),Muszynka,Muszynka,Muszynka
+280,Q6802796,Мхава,Mchawa,Mchawa,Mchawa
+281,Q6930222,Мшана (Підкарпатське воєводство),Mszana (województwo podkarpackie),"Mszana, Podkarpackie Voivodeship",Mszana
+282,Q2478772,Нагоряни (Сяноцький повіт),Nagórzany (województwo podkarpackie),Nagórzany,Nagórzany
+283,Q2523112,Надоляни,Nadolany,Nadolany,Nadolany
+284,Q3098762,Насічне,Nasiczne,Nasiczne,Nasiczne
+285,Q7030984,Небещани,Niebieszczany,Niebieszczany,Niebieszczany
+287,Q5191446,Незнайова,Nieznajowa,Nieznajowa,Nieznajowa
+290,Q5191614,Новиця (Горлицький повіт),Nowica (województwo małopolskie),"Nowica, Lesser Poland Voivodeship",Nowica
+292,Q7066855,Новосільці (Сяноцький повіт),Nowosielce (powiat sanocki),"Nowosielce, Sanok County",Nowosielce
+293,Q507087,Новотанець,Nowotaniec,Nowotaniec,Nowotaniec
+294,Q597554,Одрехова,Odrzechowa,Odrzechowa,Odrzechowa
+295,Q2654377,Ожинна,Ożenna,Ożenna,Ożenna
+296,Q5191753,Опарівка,Oparówka,Oparówka,Oparówka
+297,Q7101518,Орелець (Ліський повіт),Orelec,Orelec,Orelec
+298,Q7108310,Ославиця,Osławica (województwo podkarpackie),"Osławica, Podkarpackie Voivodeship",Osławica
+299,Q1000414,Павлокома,Pawłokoma,Pawłokoma,Pawłokoma
+300,Q595591,Пакошівка,Pakoszówka,Pakoszówka,Pakoszówka
+301,Q7131204,Панищів,Paniszczów,Paniszczów,Paniszczów
+302,Q7265027,Пантна,Pętna,Pętna,Pętna
+303,Q7143165,Пашова,Paszowa,Paszowa,Paszowa
+304,Q1000429,Пельня,Pielnia,Pielnia,Pielnia
+305,Q28704112,Перегонина,Przegonina,,Przegonina
+306,Q7191653,Перегримка,Pielgrzymka (województwo podkarpackie),"Pielgrzymka, Podkarpackie Voivodeship",Pielgrzymka
+307,Q7196906,Перунка,Piorunka,Piorunka,Piorunka
+308,Q7193089,Петруша Воля,Pietrusza Wola,Pietrusza Wola,Pietrusza Wola
+309,Q775002,Писарівці,Pisarowce,Pisarowce,Pisarowce
+310,Q1051750,Пільзно,Pilzno (Polska),Pilzno,Pilzno
+311,Q2049653,Побідно,Pobiedno,Pobiedno,Pobiedno
+312,Q2492222,Поворозник,Powroźnik,Powroźnik,Powroźnik
+313,Q7265168,Половці (Сяноцький повіт),Płowce (województwo podkarpackie),"Płowce, Podkarpackie Voivodeship",Płowce
+315,Q2514520,Полонна,Płonna (województwo podkarpackie),"Płonna, Podkarpackie Voivodeship",Płonna
+319,Q7208986,Поляни Суровичні,Polany Surowiczne,Polany Surowiczne,Polany Surowiczne
+320,Q11821551,Полянки (Ліський повіт),Polanki (województwo podkarpackie),,Polanki (województwo podkarpackie)
+321,Q2618428,Полянчик,Polańczyk,Polańczyk,Polańczyk
+323,Q7229953,Пораж,Poraż,Poraż,Poraż
+326,Q7232956,Посада Яслиська,Posada Jaśliska,Posada Jaśliska,Posada Jaśliska
+327,Q7234434,Постолів,Postołów,Postołów,Postołów
+330,Q2412626,Прелуки,Prełuki,Prełuki,Prełuki
+331,Q7253567,Прибишів (Сяноцький повіт),Przybyszów (województwo podkarpackie),"Przybyszów, Podkarpackie Voivodeship",Przybyszów
+335,Q7247427,Протісне,Procisne,Procisne,Procisne
+337,Q25668381,Пстружне,Pstrążne,,Pstrążne
+338,Q5191737,Пулави (Кросненський повіт),Puławy (województwo podkarpackie),"Puławy, Podkarpackie Voivodeship",Puławy
+340,Q4307262,Радоцина,Radocyna,Radocyna,Radocyna
+341,Q2092095,Радошиці (Підкарпатське воєводство),Radoszyce (województwo podkarpackie),"Radoszyce, Podkarpackie Voivodeship",Radoszyce
+342,Q5191778,Райське (Ліський повіт),Rajskie (województwo podkarpackie),Rajskie,Rajskie
+343,Q7286737,Ракова (Підкарпатське воєводство),Rakowa (Polska),Rakowa,Rakowa
+344,Q2383894,Ратнавиця,Ratnawica,"Ratnawica, Sanok County",Ratnawica
+347,Q2038797,Репедь,Rzepedź,Rzepedź,Rzepedź
+349,Q5191467,Рибне (Підкарпатське воєводство),Rybne (województwo podkarpackie),"Rybne, Podkarpackie Voivodeship",Rybne
+350,Q2588425,Риманів,Rymanów,Rymanów,Rymanów
+352,Q2698031,Ріпки (Малопольське воєводство),Ropki,Ropki,Ropki
+353,Q5191904,Ріпник,Rzepnik (wieś),"Rzepnik, Podkarpackie Voivodeship",Rzepnik
+354,Q5101906,Розділля,Rozdziele (powiat gorlicki),"Rozdziele, Gorlice County",Rozdziele
+356,Q7375432,Розтока Велика,Roztoka Wielka,Roztoka Wielka,Roztoka Wielka
+359,Q7375438,Розтоки Долішні,Roztoki Dolne,Roztoki Dolne,Roztoki Dolne
+360,Q2194430,Ропа (Малопольське воєводство),Ropa (wieś),"Ropa, Lesser Poland Voivodeship",Ropa
+361,Q7366759,Ропенка,Ropienka,Ropienka,Ropienka
+364,Q7369118,Росолин,Rosolin,Rosolin,Rosolin
+365,Q5191475,Розстайне,Rozstajne,Rozstajne,Rozstajne
+367,Q7376785,Рудавка Риманівська,Rudawka Rymanowska,Rudawka Rymanowska,Rudawka Rymanowska
+369,Q7376896,Руденка (Ліський повіт),Rudenka,Rudenka,Rudenka
+374,Q5192045,Свіржова Руська,Świerzowa Ruska,Świerzowa Ruska,Świerzowa Ruska
+376,Q5191718,Святкова Велика,Świątkowa Wielka,Świątkowa Wielka,Świątkowa Wielka
+377,Q8082283,Святкова Мала,Świątkowa Mała,Świątkowa Mała,Świątkowa Mała
+379,Q2014161,Семушова,Siemuszowa,Siemuszowa,Siemuszowa
+380,Q9395784,Середнє Велике,Średnie Wielkie,Średnie Wielkie,Średnie Wielkie
+381,Q5192059,Середнє Мале,Serednie Małe,Serednie Małe,Serednie Małe
+382,Q8082012,Середнє Село,Średnia Wieś (województwo podkarpackie),"Średnia Wieś, Podkarpackie Voivodeship",Średnia Wieś
+383,Q7453071,Середниця,Serednica,Serednica,Serednica
+384,Q7511080,Синява (Кросненський повіт),Sieniawa (powiat krośnieński),"Sieniawa, Gmina Rymanów",Sieniawa
+386,Q7533868,Скальник,Skalnik (wieś),"Skalnik, Podkarpackie Voivodeship",Skalnik
+387,Q3387367,Сквіртне,Skwirtne,Skwirtne,Skwirtne
+388,Q7538313,Складисте,Składziste,Składziste,Składziste
+390,Q5191571,Смерек (село),Smerek (wieś),"Smerek, Podkarpackie Voivodeship",Smerek
+391,Q5191270,Смерековець,Smerekowiec,Smerekowiec,Smerekowiec
+392,Q7544431,Смеречне,Smereczne,Smereczne,Smereczne
+394,Q4845514,Снітниця,Śnietnica,Śnietnica,Śnietnica
+396,Q7586567,Согорів Горішній,Srogów Górny,Srogów Górny,Srogów Górny
+397,Q7586566,Согорів Долішній,Srogów Dolny,Srogów Dolny,Srogów Dolny
+399,Q4427018,Соколики,Sokoliki (wieś),Sokoliki Górskie,Sokoliki Górskie
+400,Q9339192,Соколє,Sokole (województwo podkarpackie),,Sokole
+401,Q7555329,Соколова Воля,Sokołowa Wola,Sokołowa Wola,Sokołowa Wola
+402,Q3183559,Солина,Solina,"Solina, Poland",Solina
+403,Q4843776,Солинка,Solinka (wieś),"Solinka, Podkarpackie Voivodeship",Solinka
+405,Q105060,Сосновець,Sosnowiec,Sosnowiec,Sosnowiec
+406,Q7604930,Ставиша,Stawisza,Stawisza,Stawisza
+407,Q7605149,Станкова,Stańkowa (województwo podkarpackie),"Stańkowa, Podkarpackie Voivodeship",Stańkowa
+409,Q5191895,Стежниця,Stężnica,Stężnica,Stężnica
+411,Q7626015,Сторожі Великі,Stróże Wielkie,Stróże Wielkie,Stróże Wielkie
+412,Q7626017,Сторожі Малі,Stróże Małe,Stróże Małe,Stróże Małe
+413,Q7625664,Струбовиська,Strzebowiska,Strzebowiska,Strzebowiska
+415,Q9347322,Студене (Польща),Studenne,,Studenne
+416,Q7628918,Ступосяни,Stuposiany,Stuposiany,Stuposiany
+417,Q9347972,Суковате,Sukowate,,Sukowate
+418,Q5191867,Суровиця,Surowica (województwo podkarpackie),"Surowica, Podkarpackie Voivodeship",Surowica
+420,Q201729,Сянок,Sanok,Sanok,Sanok
+421,Q5192007,Сянічок,Sanoczek (wieś),"Sanoczek, Podkarpackie Voivodeship",Sanoczek
+425,Q106281,Тарнів,Tarnów,Tarnów,Tarnów
+426,Q7859495,Творильне,Tworylne,Tworylne,Tworylne
+427,Q9356576,Телешниця Сянна,Teleśnica Sanna,,Teleśnica Sanna
+429,Q7698106,Темешів,Temeszów,Temeszów,Temeszów
+430,Q2762321,Терепча,Trepcza,Trepcza,Trepcza
+431,Q5191994,Терка (Польща),Terka,Terka,Terka
+432,Q7686394,Тернава Горішня,Tarnawa Górna (województwo podkarpackie),"Tarnawa Górna, Podkarpackie Voivodeship",Tarnawa Górna
+433,Q7686392,Тернава Долішня,Tarnawa Dolna (województwo podkarpackie),"Tarnawa Dolna, Podkarpackie Voivodeship",Tarnawa Dolna
+435,Q5191744,Терстяна,Trzciana (powiat krośnieński),"Trzciana, Gmina Dukla",Trzciana
+436,Q2444697,Тилич,Tylicz,Tylicz,Tylicz
+437,Q5191534,Тилява,Tylawa,Tylawa,Tylawa
+438,Q1826689,Тирява Сільна,Tyrawa Solna,Tyrawa Solna,Tyrawa Solna
+439,Q1817136,Тирява Волоська,Tyrawa Wołoska,Tyrawa Wołoska,Tyrawa Wołoska
+440,Q9363739,Тискова,Tyskowa,,Tyskowa
+441,Q5122224,Тисовець (Ліський повіт),Cisowiec,Cisowiec,Cisowiec
+442,Q2611437,Тиханя,Ciechania,Ciechania,Ciechania
+443,Q2402303,Тісна,Cisna,Cisna,Cisna
+444,Q282992,Токарня,Tokarnia (województwo podkarpackie),"Tokarnia, Sanok County",Tokarnia
+445,Q1854371,Туринське,Turzańsk,Turzańsk,Turzańsk
+448,Q2777136,Улюч,Ulucz,Ulucz,Ulucz
+450,Q7902228,Устрики Горішні,Ustrzyki Górne,Ustrzyki Górne,Ustrzyki Górne
+454,Q5191434,Фолюш,Folusz (województwo podkarpackie),"Folusz, Podkarpackie Voivodeship",Folusz
+455,Q2620290,Хміль (Польща),Chmiel (wieś),"Chmiel, Bieszczady County",Chmiel
+456,Q56356791,Хотінь (Сяноцький повіт),Choceń (województwo podkarpackie),,Choceń
+458,Q302781,Царинське,Caryńskie,Caryńskie,Caryńskie
+460,Q5201452,Чачів,Czaczów,Czaczów,Czaczów
+461,Q1928935,Чашин,Czaszyn,Czaszyn,Czaszyn
+462,Q5191657,Черемха (Підкарпатське воєводство),Czeremcha (województwo podkarpackie),"Czeremcha, Podkarpackie Voivodeship",Czeremcha
+463,Q5191668,Чертіж (Сяноцький повіт),Czerteż (województwo podkarpackie),Czerteż,Czerteż
+465,Q5202214,Чирна,Czyrna,Czyrna,Czyrna
+466,Q5191642,Чистогорб,Czystogarb,Czystogarb,Czystogarb
+468,Q11691934,Чорна Вода (Малопольське воєводство),Czarna Woda (Jaworki),,Czarna Woda (województwo małopolskie)
+470,Q2813747,Чорне (Малопольське воєводство),Czarne (województwo małopolskie),"Czarne, Lesser Poland Voivodeship",Czarne
+471,Q5191501,Чорноріки,Czarnorzeki,Czarnorzeki,Czarnorzeki
+472,Q5191553,Шимбарк (Малопольське воєводство),Szymbark (województwo małopolskie),"Szymbark, Lesser Poland Voivodeship",Szymbark
+474,Q7664767,Шляхтова,Szlachtowa,Szlachtowa,Szlachtowa
+475,Q1943111,Щавне,Szczawne (wieś),Szczawne,Szczawne
+476,Q2693044,Щавник (Новосондецький повіт),Szczawnik (wieś),Szczawnik,Szczawnik
+477,Q1000438,Щавниця,Szczawnica,Szczawnica,Szczawnica
+478,Q9351102,Щербанівка (Сяноцький повіт),Szczerbanówka,,Szczerbanówka
+479,Q681966,Юрівці,Jurowce (województwo podkarpackie),"Jurowce, Podkarpackie Voivodeship",Jurowce
+480,Q2047272,Яблінки,Jabłonki,Jabłonki,Jabłonki
+481,Q3252354,Яблониця Польська,Jabłonica Polska,Jabłonica Polska,Jabłonica Polska
+482,Q11715152,Яблониця Руська,Jabłonica Ruska,Jabłonica Ruska,Jabłonica Ruska
+484,Q5191383,Явірки,Jaworki (województwo małopolskie),"Jaworki, Lesser Poland Voivodeship",Jaworki
+486,Q2092213,Явірник-Руський,Jawornik Ruski,Jawornik Ruski,Jawornik Ruski
+487,Q158006,Явожно,Jaworzno,Jaworzno,
+489,Q6480339,Ялин,Lalin,"Lalin, Poland",Lalin
+490,Q6154893,Янківці (Ліський повіт),Jankowce,Jankowce,Jankowce
+492,Q776567,Ясінка (Кросненський повіт),Jasionka (powiat krośnieński),"Jasionka, Gmina Dukla",Jasionka
+493,Q3496269,Яслиська,Jaśliska,Jaśliska,Jaśliska
+494,Q848983,Ясло,Jasło,Jasło,Jasło
+495,Q6164302,Ястрябик,Jastrzębik (wieś),Jastrzębik,Jastrzębik
+496,Q25668389,Яшкова,Jaszkowa (Brunary),,Jaszkowa
