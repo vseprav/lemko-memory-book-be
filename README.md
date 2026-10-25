@@ -112,6 +112,15 @@ in the browser. Wikipedia is not book data and never changes a book value. Links
 unambiguous; the file is built by `../spec/settlements/tools/make_wiki_seed.py`, which also writes the
 entries left for a hand review. A review result needs a new migration to load it.
 
+## Map points
+
+Migration `0010` adds `map_name`, `map_lat` and `map_lng` to `settlements`, from
+`migrations/data/settlements_map.csv`: the village's placemark on the community map "Мапа міст і сіл
+Закерзоння" (Google My Maps). Settlement responses carry them as `map` (null when there is no point); the
+family page embeds the map centred there. Like Wikipedia, the map is not book data. Points are taken only
+where unambiguous; the file is built by `../spec/settlements/tools/make_map_seed.py` from the map's KML
+export, which also writes the entries left for a hand review.
+
 ## Search text
 
 `query` is matched against `evicted_persons.name_search`, not the printed `full_name`. Migration

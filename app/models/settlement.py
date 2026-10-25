@@ -35,6 +35,10 @@ class Settlement(db.Model):
     wikipedia_pl = db.Column(db.Text)
     wikipedia_en = db.Column(db.Text)
     name_pl = db.Column(db.Text)  # current Polish name (Wikidata label)
+    # Not book data: the village's point on the community map (migration 0010); null when there is none
+    map_name = db.Column(db.Text)  # placemark name on the map
+    map_lat = db.Column(db.Float)
+    map_lng = db.Column(db.Float)
 
     def to_dict(self):
         return {
@@ -62,6 +66,12 @@ class Settlement(db.Model):
                 'en': self.wikipedia_en,
                 'name_pl': self.name_pl,
             } if self.wikidata_id else None,
+            # Kept apart from the book's fields; null when the settlement is not on the map
+            'map': {
+                'name': self.map_name,
+                'lat': self.map_lat,
+                'lng': self.map_lng,
+            } if self.map_lat is not None else None,
         }
 
 
